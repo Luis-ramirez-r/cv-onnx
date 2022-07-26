@@ -41,3 +41,5 @@ torch.onnx.export(model,               # model being run
 onnx_model = onnx.load(output_model_file)
 onnx.checker.check_model(onnx_model)
 
+print ('The model has been saved at: models/googlenet.onnx')
+

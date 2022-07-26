@@ -3,6 +3,7 @@ import torch
 from PIL import Image
 from torchvision import transforms
 import numpy as np
+import os
 
 model = torch.hub.load('pytorch/vision:v0.10.0', 'googlenet', pretrained=True)
 model.eval()
@@ -38,10 +39,11 @@ with torch.no_grad():
 # The output has unnormalized scores. To get probabilities, you can run a softmax on it.
 probabilities = torch.nn.functional.softmax(output[0], dim=0)
 
-top5_prob, top5_catid = torch.topk(probabilities, 5)
+top5_prob, top5_catid = torch.topk(probabilities, 1)
 for i in range(top5_prob.size(0)):
     print(categories[top5_catid[i]], top5_prob[i].item())
 
+os.mkdir('models')
 PATH = 'models/googlenet.pt'
 #torch.save(model, PATH)
 
