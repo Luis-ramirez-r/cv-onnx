@@ -1,0 +1,5 @@
+imageio==2.19.3
+Pillow==9.1.1
+onnx==1.13.0
+onnxruntime==1.9.0
+torchvision 
